@@ -1,0 +1,10 @@
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\BruteForce.exe.config
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\BruteForce.exe
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\BruteForce.pdb
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\MaterialSkin.dll
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\obj\Debug\BruteForce.csprojResolveAssemblyReference.cache
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\obj\Debug\BruteForce.Properties.Resources.resources
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\obj\Debug\BruteForce.csproj.GenerateResource.Cache
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\obj\Debug\BruteForce.exe
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\obj\Debug\BruteForce.pdb
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\obj\Debug\BruteForce.BruteForceView.resources
