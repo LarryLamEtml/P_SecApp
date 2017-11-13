@@ -28,58 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.btnImport = new MaterialSkin.Controls.MaterialFlatButton();
+            this.txbDicoFileName = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.cbMinuscule = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialCheckBox2 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialCheckBox3 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.cbMajuscule = new MaterialSkin.Controls.MaterialCheckBox();
+            this.cbNumbers = new MaterialSkin.Controls.MaterialCheckBox();
+            this.cbSymbols = new MaterialSkin.Controls.MaterialCheckBox();
             this.txbMaxChar = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnStart = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txbUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txbMinChar = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialRadioButton1 = new MaterialSkin.Controls.MaterialRadioButton();
-            this.materialRadioButton2 = new MaterialSkin.Controls.MaterialRadioButton();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.radioPost = new MaterialSkin.Controls.MaterialRadioButton();
+            this.radioGet = new MaterialSkin.Controls.MaterialRadioButton();
+            this.fileDialogDictionary = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
-            // materialFlatButton1
+            // btnImport
             // 
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(218, 168);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(79, 36);
-            this.materialFlatButton1.TabIndex = 0;
-            this.materialFlatButton1.Text = "Importer";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.btnImport.AutoSize = true;
+            this.btnImport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnImport.Depth = 0;
+            this.btnImport.Location = new System.Drawing.Point(218, 147);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnImport.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Primary = false;
+            this.btnImport.Size = new System.Drawing.Size(79, 36);
+            this.btnImport.TabIndex = 0;
+            this.btnImport.Text = "Importer";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // materialSingleLineTextField1
+            // txbDicoFileName
             // 
-            this.materialSingleLineTextField1.Depth = 0;
-            this.materialSingleLineTextField1.Hint = "Default";
-            this.materialSingleLineTextField1.Location = new System.Drawing.Point(34, 173);
-            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
-            this.materialSingleLineTextField1.PasswordChar = '\0';
-            this.materialSingleLineTextField1.SelectedText = "";
-            this.materialSingleLineTextField1.SelectionLength = 0;
-            this.materialSingleLineTextField1.SelectionStart = 0;
-            this.materialSingleLineTextField1.Size = new System.Drawing.Size(177, 23);
-            this.materialSingleLineTextField1.TabIndex = 1;
-            this.materialSingleLineTextField1.TabStop = false;
-            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            this.txbDicoFileName.Depth = 0;
+            this.txbDicoFileName.Enabled = false;
+            this.txbDicoFileName.Hint = "Default";
+            this.txbDicoFileName.Location = new System.Drawing.Point(34, 152);
+            this.txbDicoFileName.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txbDicoFileName.Name = "txbDicoFileName";
+            this.txbDicoFileName.PasswordChar = '\0';
+            this.txbDicoFileName.SelectedText = "";
+            this.txbDicoFileName.SelectionLength = 0;
+            this.txbDicoFileName.SelectionStart = 0;
+            this.txbDicoFileName.Size = new System.Drawing.Size(177, 23);
+            this.txbDicoFileName.TabIndex = 1;
+            this.txbDicoFileName.TabStop = false;
+            this.txbDicoFileName.Text = "Default";
+            this.txbDicoFileName.UseSystemPasswordChar = false;
             // 
             // materialLabel1
             // 
@@ -87,7 +89,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(30, 221);
+            this.materialLabel1.Location = new System.Drawing.Point(30, 200);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(61, 19);
@@ -99,7 +101,7 @@
             this.cbMinuscule.AutoSize = true;
             this.cbMinuscule.Depth = 0;
             this.cbMinuscule.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbMinuscule.Location = new System.Drawing.Point(34, 260);
+            this.cbMinuscule.Location = new System.Drawing.Point(34, 239);
             this.cbMinuscule.Margin = new System.Windows.Forms.Padding(0);
             this.cbMinuscule.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbMinuscule.MouseState = MaterialSkin.MouseState.HOVER;
@@ -109,60 +111,64 @@
             this.cbMinuscule.TabIndex = 4;
             this.cbMinuscule.Text = "Minuscules";
             this.cbMinuscule.UseVisualStyleBackColor = true;
+            this.cbMinuscule.CheckedChanged += new System.EventHandler(this.cbMinuscule_CheckedChanged);
             // 
-            // materialCheckBox1
+            // cbMajuscule
             // 
-            this.materialCheckBox1.AutoSize = true;
-            this.materialCheckBox1.Depth = 0;
-            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox1.Location = new System.Drawing.Point(34, 290);
-            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox1.Name = "materialCheckBox1";
-            this.materialCheckBox1.Ripple = true;
-            this.materialCheckBox1.Size = new System.Drawing.Size(100, 30);
-            this.materialCheckBox1.TabIndex = 5;
-            this.materialCheckBox1.Text = "Majuscules";
-            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            this.cbMajuscule.AutoSize = true;
+            this.cbMajuscule.Depth = 0;
+            this.cbMajuscule.Font = new System.Drawing.Font("Roboto", 10F);
+            this.cbMajuscule.Location = new System.Drawing.Point(34, 269);
+            this.cbMajuscule.Margin = new System.Windows.Forms.Padding(0);
+            this.cbMajuscule.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cbMajuscule.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cbMajuscule.Name = "cbMajuscule";
+            this.cbMajuscule.Ripple = true;
+            this.cbMajuscule.Size = new System.Drawing.Size(100, 30);
+            this.cbMajuscule.TabIndex = 5;
+            this.cbMajuscule.Text = "Majuscules";
+            this.cbMajuscule.UseVisualStyleBackColor = true;
+            this.cbMajuscule.CheckedChanged += new System.EventHandler(this.cbMajuscule_CheckedChanged);
             // 
-            // materialCheckBox2
+            // cbNumbers
             // 
-            this.materialCheckBox2.AutoSize = true;
-            this.materialCheckBox2.Depth = 0;
-            this.materialCheckBox2.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox2.Location = new System.Drawing.Point(158, 260);
-            this.materialCheckBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox2.Name = "materialCheckBox2";
-            this.materialCheckBox2.Ripple = true;
-            this.materialCheckBox2.Size = new System.Drawing.Size(79, 30);
-            this.materialCheckBox2.TabIndex = 6;
-            this.materialCheckBox2.Text = "Chiffres";
-            this.materialCheckBox2.UseVisualStyleBackColor = true;
+            this.cbNumbers.AutoSize = true;
+            this.cbNumbers.Depth = 0;
+            this.cbNumbers.Font = new System.Drawing.Font("Roboto", 10F);
+            this.cbNumbers.Location = new System.Drawing.Point(158, 239);
+            this.cbNumbers.Margin = new System.Windows.Forms.Padding(0);
+            this.cbNumbers.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cbNumbers.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cbNumbers.Name = "cbNumbers";
+            this.cbNumbers.Ripple = true;
+            this.cbNumbers.Size = new System.Drawing.Size(79, 30);
+            this.cbNumbers.TabIndex = 6;
+            this.cbNumbers.Text = "Chiffres";
+            this.cbNumbers.UseVisualStyleBackColor = true;
+            this.cbNumbers.CheckedChanged += new System.EventHandler(this.cbNumbers_CheckedChanged);
             // 
-            // materialCheckBox3
+            // cbSymbols
             // 
-            this.materialCheckBox3.AutoSize = true;
-            this.materialCheckBox3.Depth = 0;
-            this.materialCheckBox3.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox3.Location = new System.Drawing.Point(158, 290);
-            this.materialCheckBox3.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox3.Name = "materialCheckBox3";
-            this.materialCheckBox3.Ripple = true;
-            this.materialCheckBox3.Size = new System.Drawing.Size(90, 30);
-            this.materialCheckBox3.TabIndex = 7;
-            this.materialCheckBox3.Text = "Symboles";
-            this.materialCheckBox3.UseVisualStyleBackColor = true;
+            this.cbSymbols.AutoSize = true;
+            this.cbSymbols.Depth = 0;
+            this.cbSymbols.Font = new System.Drawing.Font("Roboto", 10F);
+            this.cbSymbols.Location = new System.Drawing.Point(158, 269);
+            this.cbSymbols.Margin = new System.Windows.Forms.Padding(0);
+            this.cbSymbols.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cbSymbols.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cbSymbols.Name = "cbSymbols";
+            this.cbSymbols.Ripple = true;
+            this.cbSymbols.Size = new System.Drawing.Size(90, 30);
+            this.cbSymbols.TabIndex = 7;
+            this.cbSymbols.Text = "Symboles";
+            this.cbSymbols.UseVisualStyleBackColor = true;
+            this.cbSymbols.CheckedChanged += new System.EventHandler(this.cbSymbols_CheckedChanged);
             // 
             // txbMaxChar
             // 
             this.txbMaxChar.Depth = 0;
             this.txbMaxChar.Hint = "∞";
-            this.txbMaxChar.Location = new System.Drawing.Point(79, 415);
+            this.txbMaxChar.Location = new System.Drawing.Point(79, 394);
             this.txbMaxChar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txbMaxChar.Name = "txbMaxChar";
             this.txbMaxChar.PasswordChar = '\0';
@@ -174,6 +180,7 @@
             this.txbMaxChar.TabStop = false;
             this.txbMaxChar.UseSystemPasswordChar = false;
             this.txbMaxChar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txMaxChar_KeyPress);
+            this.txbMaxChar.TextChanged += new System.EventHandler(this.txbMaxChar_TextChanged);
             // 
             // materialLabel2
             // 
@@ -181,7 +188,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(30, 386);
+            this.materialLabel2.Location = new System.Drawing.Point(30, 365);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(34, 19);
@@ -194,24 +201,25 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(30, 415);
+            this.materialLabel3.Location = new System.Drawing.Point(30, 394);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(37, 19);
             this.materialLabel3.TabIndex = 11;
             this.materialLabel3.Text = "Max";
             // 
-            // materialRaisedButton1
+            // btnStart
             // 
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(262, 483);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(97, 41);
-            this.materialRaisedButton1.TabIndex = 13;
-            this.materialRaisedButton1.Text = "Start";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.btnStart.Depth = 0;
+            this.btnStart.Location = new System.Drawing.Point(262, 438);
+            this.btnStart.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Primary = true;
+            this.btnStart.Size = new System.Drawing.Size(97, 41);
+            this.btnStart.TabIndex = 13;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // materialLabel4
             // 
@@ -219,7 +227,7 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(26, 351);
+            this.materialLabel4.Location = new System.Drawing.Point(26, 330);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(100, 19);
@@ -232,34 +240,36 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(30, 141);
+            this.materialLabel5.Location = new System.Drawing.Point(30, 120);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(125, 19);
             this.materialLabel5.TabIndex = 15;
             this.materialLabel5.Text = "Dictionnaire (.txt)";
             // 
-            // materialSingleLineTextField3
+            // txbUrl
             // 
-            this.materialSingleLineTextField3.Depth = 0;
-            this.materialSingleLineTextField3.Hint = "url";
-            this.materialSingleLineTextField3.Location = new System.Drawing.Point(34, 86);
-            this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
-            this.materialSingleLineTextField3.PasswordChar = '\0';
-            this.materialSingleLineTextField3.SelectedText = "";
-            this.materialSingleLineTextField3.SelectionLength = 0;
-            this.materialSingleLineTextField3.SelectionStart = 0;
-            this.materialSingleLineTextField3.Size = new System.Drawing.Size(301, 23);
-            this.materialSingleLineTextField3.TabIndex = 16;
-            this.materialSingleLineTextField3.TabStop = false;
-            this.materialSingleLineTextField3.UseSystemPasswordChar = false;
+            this.txbUrl.Depth = 0;
+            this.txbUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.txbUrl.Hint = "URL";
+            this.txbUrl.Location = new System.Drawing.Point(34, 79);
+            this.txbUrl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txbUrl.Name = "txbUrl";
+            this.txbUrl.PasswordChar = '\0';
+            this.txbUrl.SelectedText = "";
+            this.txbUrl.SelectionLength = 0;
+            this.txbUrl.SelectionStart = 0;
+            this.txbUrl.Size = new System.Drawing.Size(301, 23);
+            this.txbUrl.TabIndex = 16;
+            this.txbUrl.TabStop = false;
+            this.txbUrl.UseSystemPasswordChar = false;
+            this.txbUrl.TextChanged += new System.EventHandler(this.txbUrl_TextChanged);
             // 
             // txbMinChar
             // 
             this.txbMinChar.Depth = 0;
-            this.txbMinChar.Hint = "0";
-            this.txbMinChar.Location = new System.Drawing.Point(79, 386);
+            this.txbMinChar.Hint = "1";
+            this.txbMinChar.Location = new System.Drawing.Point(79, 365);
             this.txbMinChar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txbMinChar.Name = "txbMinChar";
             this.txbMinChar.PasswordChar = '\0';
@@ -271,6 +281,7 @@
             this.txbMinChar.TabStop = false;
             this.txbMinChar.UseSystemPasswordChar = false;
             this.txbMinChar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbMinChar_KeyPress);
+            this.txbMinChar.TextChanged += new System.EventHandler(this.txbMinChar_TextChanged);
             // 
             // materialLabel6
             // 
@@ -278,80 +289,82 @@
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(208, 351);
+            this.materialLabel6.Location = new System.Drawing.Point(208, 330);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(68, 19);
             this.materialLabel6.TabIndex = 20;
             this.materialLabel6.Text = "Méthode";
             // 
-            // materialRadioButton1
+            // radioPost
             // 
-            this.materialRadioButton1.AutoSize = true;
-            this.materialRadioButton1.Depth = 0;
-            this.materialRadioButton1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialRadioButton1.Location = new System.Drawing.Point(212, 381);
-            this.materialRadioButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialRadioButton1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRadioButton1.Name = "materialRadioButton1";
-            this.materialRadioButton1.Ripple = true;
-            this.materialRadioButton1.Size = new System.Drawing.Size(64, 30);
-            this.materialRadioButton1.TabIndex = 21;
-            this.materialRadioButton1.TabStop = true;
-            this.materialRadioButton1.Text = "POST";
-            this.materialRadioButton1.UseVisualStyleBackColor = true;
+            this.radioPost.AutoSize = true;
+            this.radioPost.Depth = 0;
+            this.radioPost.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioPost.Location = new System.Drawing.Point(212, 360);
+            this.radioPost.Margin = new System.Windows.Forms.Padding(0);
+            this.radioPost.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.radioPost.MouseState = MaterialSkin.MouseState.HOVER;
+            this.radioPost.Name = "radioPost";
+            this.radioPost.Ripple = true;
+            this.radioPost.Size = new System.Drawing.Size(64, 30);
+            this.radioPost.TabIndex = 21;
+            this.radioPost.TabStop = true;
+            this.radioPost.Text = "POST";
+            this.radioPost.UseVisualStyleBackColor = true;
+            this.radioPost.CheckedChanged += new System.EventHandler(this.radioPost_CheckedChanged);
             // 
-            // materialRadioButton2
+            // radioGet
             // 
-            this.materialRadioButton2.AutoSize = true;
-            this.materialRadioButton2.Depth = 0;
-            this.materialRadioButton2.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialRadioButton2.Location = new System.Drawing.Point(212, 411);
-            this.materialRadioButton2.Margin = new System.Windows.Forms.Padding(0);
-            this.materialRadioButton2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRadioButton2.Name = "materialRadioButton2";
-            this.materialRadioButton2.Ripple = true;
-            this.materialRadioButton2.Size = new System.Drawing.Size(54, 30);
-            this.materialRadioButton2.TabIndex = 22;
-            this.materialRadioButton2.TabStop = true;
-            this.materialRadioButton2.Text = "GET";
-            this.materialRadioButton2.UseVisualStyleBackColor = true;
+            this.radioGet.AutoSize = true;
+            this.radioGet.Depth = 0;
+            this.radioGet.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioGet.Location = new System.Drawing.Point(212, 390);
+            this.radioGet.Margin = new System.Windows.Forms.Padding(0);
+            this.radioGet.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.radioGet.MouseState = MaterialSkin.MouseState.HOVER;
+            this.radioGet.Name = "radioGet";
+            this.radioGet.Ripple = true;
+            this.radioGet.Size = new System.Drawing.Size(54, 30);
+            this.radioGet.TabIndex = 22;
+            this.radioGet.TabStop = true;
+            this.radioGet.Text = "GET";
+            this.radioGet.UseVisualStyleBackColor = true;
+            this.radioGet.CheckedChanged += new System.EventHandler(this.radioGet_CheckedChanged);
             // 
-            // openFileDialog1
+            // fileDialogDictionary
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.fileDialogDictionary.FileName = "openFileDialog1";
+            this.fileDialogDictionary.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialogDictionary_FileOk);
             // 
             // BruteForceView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 536);
-            this.Controls.Add(this.materialRadioButton2);
-            this.Controls.Add(this.materialRadioButton1);
+            this.ClientSize = new System.Drawing.Size(371, 491);
+            this.Controls.Add(this.radioGet);
+            this.Controls.Add(this.radioPost);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.txbMinChar);
-            this.Controls.Add(this.materialSingleLineTextField3);
+            this.Controls.Add(this.txbUrl);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.materialLabel4);
-            this.Controls.Add(this.materialRaisedButton1);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.txbMaxChar);
-            this.Controls.Add(this.materialCheckBox3);
-            this.Controls.Add(this.materialCheckBox2);
-            this.Controls.Add(this.materialCheckBox1);
+            this.Controls.Add(this.cbSymbols);
+            this.Controls.Add(this.cbNumbers);
+            this.Controls.Add(this.cbMajuscule);
             this.Controls.Add(this.cbMinuscule);
             this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.materialSingleLineTextField1);
-            this.Controls.Add(this.materialFlatButton1);
+            this.Controls.Add(this.txbDicoFileName);
+            this.Controls.Add(this.btnImport);
+            this.ForeColor = System.Drawing.Color.Red;
             this.MaximizeBox = false;
             this.Name = "BruteForceView";
             this.Sizable = false;
             this.Text = "BruteForcer";
-            this.Load += new System.EventHandler(this.BruteForceView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,25 +372,25 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialFlatButton btnImport;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txbDicoFileName;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialCheckBox cbMinuscule;
-        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
-        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox2;
-        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox3;
+        private MaterialSkin.Controls.MaterialCheckBox cbMajuscule;
+        private MaterialSkin.Controls.MaterialCheckBox cbNumbers;
+        private MaterialSkin.Controls.MaterialCheckBox cbSymbols;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbMaxChar;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnStart;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txbUrl;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbMinChar;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton1;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton2;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private MaterialSkin.Controls.MaterialRadioButton radioPost;
+        private MaterialSkin.Controls.MaterialRadioButton radioGet;
+        private System.Windows.Forms.OpenFileDialog fileDialogDictionary;
     }
 }
 
