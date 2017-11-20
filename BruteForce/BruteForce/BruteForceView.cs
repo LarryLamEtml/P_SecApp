@@ -2,6 +2,7 @@
 using MaterialSkin.Controls;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -10,7 +11,7 @@ namespace BruteForce
     public partial class BruteForceView : MaterialForm
     {
         //Dictionnaire
-        private string[] dictionnaryData;
+        private string dictionnaryPath = "dictionnary.txt";
 
         //Checkboxes
         private bool majuscules = false;
@@ -26,12 +27,18 @@ namespace BruteForce
         private int minChar = 1;
 
         private string url;
+        private string login;
+        private string password;
+        private string username;
 
         private const int ERROR_MINCHAR = 0;
         private const int ERROR_MAXCHAR = 1;
         private const int ERROR_DICTIONNARY = 2;
         private const int ERROR_URL = 3;
-        private const int VALID_FORM = 4;
+        private const int ERROR_LOGIN = 4;
+        private const int ERROR_PASSWORD = 5;
+        private const int ERROR_USERNAME = 6;
+        private const int VALID_FORM = 10;
 
         public BruteForceView()
         {
@@ -40,9 +47,10 @@ namespace BruteForce
             //Couleurs et thèmes
             setColors();
             //Récupère le dictionnaire par defaut
-            dictionnaryData = System.IO.File.ReadAllLines("dictionnary.txt");
             //Definit la methode post par defaut (radio)
             radioPost.Checked = true;
+
+            this.AcceptButton = btnStart;
         }
         /// <summary>
         /// 
@@ -101,7 +109,8 @@ namespace BruteForce
             try
             {
                 //Stocke les données du fichier dans une variable
-                dictionnaryData = System.IO.File.ReadAllLines(fileDialogDictionary.FileName);
+                //dictionnaryData = System.IO.File.ReadAllLines(fileDialogDictionary.FileName);
+                dictionnaryPath = fileDialogDictionary.FileName;
                 //Affiche le chemin du fichier choisi
                 txbDicoFileName.Text = fileDialogDictionary.FileName;
             }
@@ -130,6 +139,15 @@ namespace BruteForce
                 case ERROR_URL:
                     MessageBox.Show("L'url n'est pas valide veuillez respecter la syntaxe [http(s)://]site.com");
                     break;
+                case ERROR_LOGIN:
+                    MessageBox.Show("Veuillez remplir la variable login de l'url");
+                    break;
+                case ERROR_PASSWORD:
+                    MessageBox.Show("Veuillez remplir la variable password de l'url");
+                    break;
+                case ERROR_USERNAME:
+                    MessageBox.Show("Veuillez remplir le nom d'utilisateur");
+                    break;
                 case VALID_FORM://Commence le bruteforce
                     startBruteForce();
                     break;
@@ -141,6 +159,7 @@ namespace BruteForce
 
         private void startBruteForce()
         {
+            BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, maxChar, minChar,username);
 
         }
 
@@ -236,7 +255,7 @@ namespace BruteForce
             }
 
             //Valide le dictionnaire
-            if (dictionnaryData == null)
+            if (dictionnaryPath == null)
             {
                 return ERROR_DICTIONNARY;
             }
@@ -250,8 +269,41 @@ namespace BruteForce
             {
                 return ERROR_URL;
             }
+            if (login == null)
+            {
+                return ERROR_LOGIN;
+            }
+            if (password == null)
+            {
+                return ERROR_PASSWORD;
+            }
+            if (username == null)
+            {
+                return ERROR_USERNAME;
+            }
             //Si tout est valide
             return VALID_FORM;
+        }
+
+        private void txbLogin_TextChanged(object sender, EventArgs e)
+        {
+            login = txbLogin.Text;
+        }
+
+        private void txbPassword_TextChanged(object sender, EventArgs e)
+        {
+            password = txbPassword.Text;
+
+        }
+
+        private void BruteForceView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbUsername_TextChanged(object sender, EventArgs e)
+        {
+            username = txbUsername.Text;
         }
     }
 }
