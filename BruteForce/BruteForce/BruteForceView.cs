@@ -41,7 +41,7 @@ namespace BruteForce
             setColors();
             //Récupère le dictionnaire par defaut
             dictionnaryData = System.IO.File.ReadAllLines("dictionnary.txt");
-            //Definit la methode post par defaut (radio)           
+            //Definit la methode post par defaut (radio)
             radioPost.Checked = true;
         }
         /// <summary>
