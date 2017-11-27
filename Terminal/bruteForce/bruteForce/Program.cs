@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace bruteForce
 {
@@ -11,10 +7,12 @@ namespace bruteForce
         static void Main(string[] args)
         {
             String password;
-            BruteForceHTTP btForce = new BruteForceHTTP("http://127.0.0.1:8080/edsa-shop/index.php?controller=login&action=login", "login", "password", @"C:\Users\vuffrayju\Downloads\rockyou.txt");
+            DateTime dt = DateTime.Now;
+            BruteForceHTTP btForce = new BruteForceHTTP("http://127.0.0.1:8080/edsa-shop/index.php?controller=login&action=login", "login", "password", @"C:\Users\vuffrayju\Downloads\test.txt");
             
             password = btForce.findPassword();
-            Console.Write(password);
+            DateTime dt2 = DateTime.Now;
+            Console.Write(password+"\n"+(dt2-dt).TotalSeconds+"s");
             Console.ReadLine();
         }
 

