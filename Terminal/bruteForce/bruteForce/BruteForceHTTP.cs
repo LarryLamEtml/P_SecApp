@@ -45,7 +45,15 @@ namespace bruteForce
             String _url = constructUrl(url, getUsrename, Guid.NewGuid().ToString(), getPassword, Guid.NewGuid().ToString());
             //lancer la requete
             WebRequest request = WebRequest.Create(_url);
-            HttpWebResponse reponse = (HttpWebResponse)request.GetResponse();
+            HttpWebResponse reponse;
+            try
+            {
+                reponse = (HttpWebResponse)request.GetResponse();
+            }
+            catch
+            {
+                return @"/!\ Site Web Inaccessible /!\";
+            }
             //stocker la page avec connexion échouée
             StreamReader sr = new StreamReader(reponse.GetResponseStream());
             badRequest = sr.ReadToEnd();
