@@ -24,6 +24,8 @@ namespace bruteForce
         private string[] allPassword;
         private FileStream fl;
         private int nbLine;
+        //variable de requete
+        HttpWebResponse reponse;
         private const int NB_THREAD = 2;
         private bool methodGET = true;
 
@@ -50,7 +52,7 @@ namespace bruteForce
             String _url = constructUrl(url, getUsrename, Guid.NewGuid().ToString(), getPassword, Guid.NewGuid().ToString());
             //lancer la requete
             WebRequest request = WebRequest.Create(_url);
-            HttpWebResponse reponse;
+            
             try
             {
                 reponse = (HttpWebResponse)request.GetResponse();
@@ -171,8 +173,7 @@ namespace bruteForce
         {
             //variable mot de passe
             String passwordThread = "";
-            //variable de requete
-            HttpWebResponse reponse;
+
             WebRequest request;
             //string de l'url pour la requete
             string _url;
@@ -203,7 +204,7 @@ namespace bruteForce
 
         }
 
-        public string findPasswordPOST(int iStart)
+        public string findPasswordThreadPOST(int iStart)
         {
             string passwordToReturn = "";
             using (WebClient client = new WebClient())

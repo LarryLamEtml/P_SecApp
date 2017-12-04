@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BruteForce
@@ -177,7 +178,9 @@ namespace BruteForce
                     MessageBox.Show("Veuillez remplir le nom d'utilisateur");
                     break;
                 case VALID_FORM://Commence le bruteforce
-                    startBruteForce();
+                    Thread thread = new Thread(startBruteForce);
+                    thread.Start();
+                    //startBruteForce();
                     break;
                 default:
                     break;
@@ -187,7 +190,7 @@ namespace BruteForce
 
         private void startBruteForce()
         {
-            BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, mode, maxChar, minChar,username);
+            BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, mode, maxChar, minChar,username,txbLogin.Text,txbPassword.Text);
 
         }
 
@@ -266,7 +269,7 @@ namespace BruteForce
         private int validateForm()
         {
             //Regex pour url
-            string pattern = @"^(http://|ftp://|https://)?(.+)+\.[^.]+$";
+            string pattern = @"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$";
             Regex reg = new Regex(pattern);
             
             //Valide l'url
