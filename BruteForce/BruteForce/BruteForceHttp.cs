@@ -11,6 +11,10 @@ using System.Net;
 using System.Collections.Specialized;
 using System.Windows.Forms;
 using System.Linq;
+using System.IO;
+using System;
+using System.Threading;
+using System.Collections.Generic;
 
 namespace BruteForce
 {
@@ -197,10 +201,10 @@ namespace BruteForce
                 badRequestPost = System.Text.Encoding.UTF8.GetString(response);
 
             }
+            
             //stocker la page avec connexion échouée
             StreamReader sr = new StreamReader(reponseGET.GetResponseStream());
             badRequest = sr.ReadToEnd();
-            PleaseWaitForm pleaseWait = new PleaseWaitForm();
             //lANCEMENT DES REQUETES EN MULTITHREAD
             List<Thread> threadList = new List<Thread>();
             Thread dividePasswordFinder1 = new Thread(thread1Start);
@@ -218,7 +222,7 @@ namespace BruteForce
             {
                 th.Join();
             }
-
+            
             MessageBox.Show(passwordRight);
             /*try
             {

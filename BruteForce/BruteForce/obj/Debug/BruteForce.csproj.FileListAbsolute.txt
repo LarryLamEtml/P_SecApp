@@ -12,9 +12,13 @@ F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\B
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\BruteForce.exe
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\BruteForce.pdb
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\MaterialSkin.dll
-F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\obj\Debug\BruteForce.csprojResolveAssemblyReference.cache
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\obj\Debug\BruteForce.BruteForceView.resources
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\obj\Debug\BruteForce.Properties.Resources.resources
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\obj\Debug\BruteForce.csproj.GenerateResource.Cache
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\obj\Debug\BruteForce.exe
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\obj\Debug\BruteForce.pdb
+F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\obj\Debug\BruteForce.LoadingForm.resources
+F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\CircularProgressBar.dll
+F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\WinFormAnimation.dll
+F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\CircularProgressBar.xml
+F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\WinFormAnimation.xml
