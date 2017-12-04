@@ -38,16 +38,15 @@ namespace BruteForce
         {
             this.btnImport = new MaterialSkin.Controls.MaterialFlatButton();
             this.txbDicoFileName = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.cbMinuscule = new MaterialSkin.Controls.MaterialCheckBox();
             this.cbMajuscule = new MaterialSkin.Controls.MaterialCheckBox();
             this.cbNumbers = new MaterialSkin.Controls.MaterialCheckBox();
             this.cbSymbols = new MaterialSkin.Controls.MaterialCheckBox();
             this.txbMaxChar = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.txbMin = new MaterialSkin.Controls.MaterialLabel();
+            this.txbMax = new MaterialSkin.Controls.MaterialLabel();
             this.btnStart = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.txbChar = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.txbUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txbMinChar = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -58,6 +57,7 @@ namespace BruteForce
             this.txbLogin = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txbPassword = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txbUsername = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.cbOptions = new MaterialSkin.Controls.MaterialCheckBox();
             this.SuspendLayout();
             // 
             // btnImport
@@ -65,7 +65,7 @@ namespace BruteForce
             this.btnImport.AutoSize = true;
             this.btnImport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnImport.Depth = 0;
-            this.btnImport.Location = new System.Drawing.Point(218, 227);
+            this.btnImport.Location = new System.Drawing.Point(218, 280);
             this.btnImport.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnImport.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnImport.Name = "btnImport";
@@ -81,7 +81,7 @@ namespace BruteForce
             this.txbDicoFileName.Depth = 0;
             this.txbDicoFileName.Enabled = false;
             this.txbDicoFileName.Hint = "Default";
-            this.txbDicoFileName.Location = new System.Drawing.Point(34, 232);
+            this.txbDicoFileName.Location = new System.Drawing.Point(34, 285);
             this.txbDicoFileName.MouseState = MaterialSkin.MouseState.HOVER;
             this.txbDicoFileName.Name = "txbDicoFileName";
             this.txbDicoFileName.PasswordChar = '\0';
@@ -94,25 +94,12 @@ namespace BruteForce
             this.txbDicoFileName.Text = "Default";
             this.txbDicoFileName.UseSystemPasswordChar = false;
             // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(30, 280);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(61, 19);
-            this.materialLabel1.TabIndex = 3;
-            this.materialLabel1.Text = "Options";
-            // 
             // cbMinuscule
             // 
             this.cbMinuscule.AutoSize = true;
             this.cbMinuscule.Depth = 0;
             this.cbMinuscule.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbMinuscule.Location = new System.Drawing.Point(58, 319);
+            this.cbMinuscule.Location = new System.Drawing.Point(58, 369);
             this.cbMinuscule.Margin = new System.Windows.Forms.Padding(0);
             this.cbMinuscule.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbMinuscule.MouseState = MaterialSkin.MouseState.HOVER;
@@ -129,7 +116,7 @@ namespace BruteForce
             this.cbMajuscule.AutoSize = true;
             this.cbMajuscule.Depth = 0;
             this.cbMajuscule.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbMajuscule.Location = new System.Drawing.Point(58, 349);
+            this.cbMajuscule.Location = new System.Drawing.Point(58, 399);
             this.cbMajuscule.Margin = new System.Windows.Forms.Padding(0);
             this.cbMajuscule.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbMajuscule.MouseState = MaterialSkin.MouseState.HOVER;
@@ -146,7 +133,7 @@ namespace BruteForce
             this.cbNumbers.AutoSize = true;
             this.cbNumbers.Depth = 0;
             this.cbNumbers.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbNumbers.Location = new System.Drawing.Point(215, 319);
+            this.cbNumbers.Location = new System.Drawing.Point(215, 369);
             this.cbNumbers.Margin = new System.Windows.Forms.Padding(0);
             this.cbNumbers.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbNumbers.MouseState = MaterialSkin.MouseState.HOVER;
@@ -163,7 +150,7 @@ namespace BruteForce
             this.cbSymbols.AutoSize = true;
             this.cbSymbols.Depth = 0;
             this.cbSymbols.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbSymbols.Location = new System.Drawing.Point(215, 349);
+            this.cbSymbols.Location = new System.Drawing.Point(215, 399);
             this.cbSymbols.Margin = new System.Windows.Forms.Padding(0);
             this.cbSymbols.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbSymbols.MouseState = MaterialSkin.MouseState.HOVER;
@@ -179,7 +166,7 @@ namespace BruteForce
             // 
             this.txbMaxChar.Depth = 0;
             this.txbMaxChar.Hint = "∞";
-            this.txbMaxChar.Location = new System.Drawing.Point(79, 474);
+            this.txbMaxChar.Location = new System.Drawing.Point(235, 479);
             this.txbMaxChar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txbMaxChar.Name = "txbMaxChar";
             this.txbMaxChar.PasswordChar = '\0';
@@ -193,36 +180,36 @@ namespace BruteForce
             this.txbMaxChar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txMaxChar_KeyPress);
             this.txbMaxChar.TextChanged += new System.EventHandler(this.txbMaxChar_TextChanged);
             // 
-            // materialLabel2
+            // txbMin
             // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(30, 445);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(34, 19);
-            this.materialLabel2.TabIndex = 10;
-            this.materialLabel2.Text = "Min";
+            this.txbMin.AutoSize = true;
+            this.txbMin.Depth = 0;
+            this.txbMin.Font = new System.Drawing.Font("Roboto", 11F);
+            this.txbMin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbMin.Location = new System.Drawing.Point(34, 478);
+            this.txbMin.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txbMin.Name = "txbMin";
+            this.txbMin.Size = new System.Drawing.Size(34, 19);
+            this.txbMin.TabIndex = 10;
+            this.txbMin.Text = "Min";
             // 
-            // materialLabel3
+            // txbMax
             // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(30, 474);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(37, 19);
-            this.materialLabel3.TabIndex = 11;
-            this.materialLabel3.Text = "Max";
+            this.txbMax.AutoSize = true;
+            this.txbMax.Depth = 0;
+            this.txbMax.Font = new System.Drawing.Font("Roboto", 11F);
+            this.txbMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbMax.Location = new System.Drawing.Point(186, 479);
+            this.txbMax.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txbMax.Name = "txbMax";
+            this.txbMax.Size = new System.Drawing.Size(37, 19);
+            this.txbMax.TabIndex = 11;
+            this.txbMax.Text = "Max";
             // 
             // btnStart
             // 
             this.btnStart.Depth = 0;
-            this.btnStart.Location = new System.Drawing.Point(262, 518);
+            this.btnStart.Location = new System.Drawing.Point(262, 540);
             this.btnStart.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnStart.Name = "btnStart";
             this.btnStart.Primary = true;
@@ -232,18 +219,18 @@ namespace BruteForce
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // materialLabel4
+            // txbChar
             // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(26, 410);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(100, 19);
-            this.materialLabel4.TabIndex = 14;
-            this.materialLabel4.Text = "Charactère(s)";
+            this.txbChar.AutoSize = true;
+            this.txbChar.Depth = 0;
+            this.txbChar.Font = new System.Drawing.Font("Roboto", 11F);
+            this.txbChar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbChar.Location = new System.Drawing.Point(30, 443);
+            this.txbChar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txbChar.Name = "txbChar";
+            this.txbChar.Size = new System.Drawing.Size(100, 19);
+            this.txbChar.TabIndex = 14;
+            this.txbChar.Text = "Charactère(s)";
             // 
             // materialLabel5
             // 
@@ -251,7 +238,7 @@ namespace BruteForce
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(30, 200);
+            this.materialLabel5.Location = new System.Drawing.Point(30, 251);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(125, 19);
@@ -280,7 +267,7 @@ namespace BruteForce
             // 
             this.txbMinChar.Depth = 0;
             this.txbMinChar.Hint = "1";
-            this.txbMinChar.Location = new System.Drawing.Point(79, 445);
+            this.txbMinChar.Location = new System.Drawing.Point(83, 478);
             this.txbMinChar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txbMinChar.Name = "txbMinChar";
             this.txbMinChar.PasswordChar = '\0';
@@ -300,7 +287,7 @@ namespace BruteForce
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(208, 410);
+            this.materialLabel6.Location = new System.Drawing.Point(30, 213);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(68, 19);
@@ -312,7 +299,7 @@ namespace BruteForce
             this.radioPost.AutoSize = true;
             this.radioPost.Depth = 0;
             this.radioPost.Font = new System.Drawing.Font("Roboto", 10F);
-            this.radioPost.Location = new System.Drawing.Point(212, 440);
+            this.radioPost.Location = new System.Drawing.Point(147, 208);
             this.radioPost.Margin = new System.Windows.Forms.Padding(0);
             this.radioPost.MouseLocation = new System.Drawing.Point(-1, -1);
             this.radioPost.MouseState = MaterialSkin.MouseState.HOVER;
@@ -330,7 +317,7 @@ namespace BruteForce
             this.radioGet.AutoSize = true;
             this.radioGet.Depth = 0;
             this.radioGet.Font = new System.Drawing.Font("Roboto", 10F);
-            this.radioGet.Location = new System.Drawing.Point(212, 470);
+            this.radioGet.Location = new System.Drawing.Point(222, 208);
             this.radioGet.Margin = new System.Windows.Forms.Padding(0);
             this.radioGet.MouseLocation = new System.Drawing.Point(-1, -1);
             this.radioGet.MouseState = MaterialSkin.MouseState.HOVER;
@@ -401,11 +388,28 @@ namespace BruteForce
             this.txbUsername.UseSystemPasswordChar = false;
             this.txbUsername.TextChanged += new System.EventHandler(this.txbUsername_TextChanged);
             // 
+            // cbOptions
+            // 
+            this.cbOptions.AutoSize = true;
+            this.cbOptions.Depth = 0;
+            this.cbOptions.Font = new System.Drawing.Font("Roboto", 10F);
+            this.cbOptions.Location = new System.Drawing.Point(34, 327);
+            this.cbOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.cbOptions.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cbOptions.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cbOptions.Name = "cbOptions";
+            this.cbOptions.Ripple = true;
+            this.cbOptions.Size = new System.Drawing.Size(78, 30);
+            this.cbOptions.TabIndex = 22;
+            this.cbOptions.Text = "Options";
+            this.cbOptions.UseVisualStyleBackColor = true;
+            // 
             // BruteForceView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 581);
+            this.ClientSize = new System.Drawing.Size(371, 593);
+            this.Controls.Add(this.cbOptions);
             this.Controls.Add(this.txbUsername);
             this.Controls.Add(this.txbPassword);
             this.Controls.Add(this.txbLogin);
@@ -415,16 +419,15 @@ namespace BruteForce
             this.Controls.Add(this.txbMinChar);
             this.Controls.Add(this.txbUrl);
             this.Controls.Add(this.materialLabel5);
-            this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.txbChar);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.materialLabel3);
-            this.Controls.Add(this.materialLabel2);
+            this.Controls.Add(this.txbMax);
+            this.Controls.Add(this.txbMin);
             this.Controls.Add(this.txbMaxChar);
             this.Controls.Add(this.cbSymbols);
             this.Controls.Add(this.cbNumbers);
             this.Controls.Add(this.cbMajuscule);
             this.Controls.Add(this.cbMinuscule);
-            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txbDicoFileName);
             this.Controls.Add(this.btnImport);
             this.ForeColor = System.Drawing.Color.Red;
@@ -442,16 +445,15 @@ namespace BruteForce
 
         private MaterialSkin.Controls.MaterialFlatButton btnImport;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbDicoFileName;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialCheckBox cbMinuscule;
         private MaterialSkin.Controls.MaterialCheckBox cbMajuscule;
         private MaterialSkin.Controls.MaterialCheckBox cbNumbers;
         private MaterialSkin.Controls.MaterialCheckBox cbSymbols;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbMaxChar;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel txbMin;
+        private MaterialSkin.Controls.MaterialLabel txbMax;
         private MaterialSkin.Controls.MaterialRaisedButton btnStart;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel txbChar;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbUrl;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbMinChar;
@@ -462,6 +464,7 @@ namespace BruteForce
         private MaterialSkin.Controls.MaterialSingleLineTextField txbLogin;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbPassword;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbUsername;
+        private MaterialSkin.Controls.MaterialCheckBox cbOptions;
     }
 }
 
