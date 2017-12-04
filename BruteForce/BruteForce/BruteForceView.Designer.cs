@@ -165,7 +165,7 @@ namespace BruteForce
             // txbMaxChar
             // 
             this.txbMaxChar.Depth = 0;
-            this.txbMaxChar.Hint = "∞";
+            this.txbMaxChar.Hint = "100";
             this.txbMaxChar.Location = new System.Drawing.Point(235, 479);
             this.txbMaxChar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txbMaxChar.Name = "txbMaxChar";
@@ -332,7 +332,6 @@ namespace BruteForce
             // 
             // fileDialogDictionary
             // 
-            this.fileDialogDictionary.FileName = "openFileDialog1";
             this.fileDialogDictionary.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialogDictionary_FileOk);
             // 
             // txbLogin
@@ -403,6 +402,7 @@ namespace BruteForce
             this.cbOptions.TabIndex = 22;
             this.cbOptions.Text = "Options";
             this.cbOptions.UseVisualStyleBackColor = true;
+            this.cbOptions.CheckedChanged += new System.EventHandler(this.cbOptions_CheckedChanged);
             // 
             // BruteForceView
             // 
@@ -434,7 +434,7 @@ namespace BruteForce
             this.MaximizeBox = false;
             this.Name = "BruteForceView";
             this.Sizable = false;
-            this.Text = "BruteForcer";
+            this.Text = "  ";
             this.Load += new System.EventHandler(this.BruteForceView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

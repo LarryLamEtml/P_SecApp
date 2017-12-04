@@ -21,6 +21,7 @@ namespace BruteForce
 
         //Methode
         private int method = 1;//1 = post, 2 = get
+        private int mode = 1;//1 = dictionnary, 2 = generated
 
         //Max & Min char
         private int maxChar = 100;
@@ -186,7 +187,7 @@ namespace BruteForce
 
         private void startBruteForce()
         {
-            BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, maxChar, minChar,username);
+            BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, mode, maxChar, minChar,username);
 
         }
 
@@ -267,26 +268,7 @@ namespace BruteForce
             //Regex pour url
             string pattern = @"^(http://|ftp://|https://)?(.+)+\.[^.]+$";
             Regex reg = new Regex(pattern);
-
-            //Valide l'input minChar
-            if (minChar <= 0)
-            {
-                return ERROR_MINCHAR;
-            }
-
-            //Valide l'input maxChar
-            if (minChar > maxChar)
-            {
-                return ERROR_MAXCHAR;
-
-            }
-
-            //Valide le dictionnaire
-            if (dictionnaryPath == null)
-            {
-                return ERROR_DICTIONNARY;
-            }
-
+            
             //Valide l'url
             if (url == null)
             {
@@ -307,6 +289,30 @@ namespace BruteForce
             if (username == null)
             {
                 return ERROR_USERNAME;
+            }
+
+            if(method == 1)
+            {
+                //Valide le dictionnaire
+                if (dictionnaryPath == null)
+                {
+                    return ERROR_DICTIONNARY;
+                }
+            }
+            else
+            {
+                //Valide l'input minChar
+                if (minChar <= 0)
+                {
+                    return ERROR_MINCHAR;
+                }
+
+                //Valide l'input maxChar
+                if (minChar > maxChar)
+                {
+                    return ERROR_MAXCHAR;
+
+                }
             }
             //Si tout est valide
             return VALID_FORM;
@@ -333,9 +339,22 @@ namespace BruteForce
             username = txbUsername.Text;
         }
 
-        private void cbOptions_checked(object sender, EventArgs e)
+        private void cbOptions_CheckedChanged(object sender, EventArgs e)
         {
-
+            if(cbOptions.Checked)
+            {
+                btnImport.Enabled = false;
+                txbDicoFileName.Enabled = false;
+                showOptions();
+                mode = 2;
+            }
+            else
+            {
+                btnImport.Enabled = true;
+                txbDicoFileName.Enabled = true;
+                hideOptions();
+                mode = 1;
+            }
         }
     }
 }
