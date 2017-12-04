@@ -49,9 +49,36 @@ namespace BruteForce
             //Récupère le dictionnaire par defaut
             //Definit la methode post par defaut (radio)
             radioPost.Checked = true;
-
             this.AcceptButton = btnStart;
+
+            hideOptions();
         }
+
+        public void hideOptions()
+        {
+            cbMajuscule.Hide();
+            cbMinuscule.Hide();
+            cbNumbers.Hide();
+            cbSymbols.Hide();
+            txbChar.Hide();
+            txbMax.Hide();
+            txbMaxChar.Hide();
+            txbMin.Hide();
+            txbMinChar.Hide();
+        }
+        public void showOptions()
+        {
+            cbMajuscule.Show();
+            cbMinuscule.Show();
+            cbNumbers.Show();
+            cbSymbols.Show();
+            txbChar.Show();
+            txbMax.Show();
+            txbMaxChar.Show();
+            txbMin.Show();
+            txbMinChar.Show();
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -304,6 +331,11 @@ namespace BruteForce
         private void txbUsername_TextChanged(object sender, EventArgs e)
         {
             username = txbUsername.Text;
+        }
+
+        private void cbOptions_checked(object sender, EventArgs e)
+        {
+
         }
     }
 }
