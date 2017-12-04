@@ -10,10 +10,10 @@ namespace BruteForce
 
         // Define supported password characters divided into groups.
         // You can add (or remove) characters to (from) these groups.
-        private static string PASSWORD_CHARS_LCASE = "abcdefgijkmnopqrstwxyz";
-        private static string PASSWORD_CHARS_UCASE = "ABCDEFGHJKLMNPQRSTWXYZ";
-        private static string PASSWORD_CHARS_NUMERIC = "123456789";
-        private static string PASSWORD_CHARS_SPECIAL = "*$-+?_&=!%{}/ ";
+        private static string PASSWORD_CHARS_LCASE;
+        private static string PASSWORD_CHARS_UCASE;
+        private static string PASSWORD_CHARS_NUMERIC;
+        private static string PASSWORD_CHARS_SPECIAL;
 
         public RandomPassword(int minChar, int maxChar, bool lowerCase, bool upperCase, bool numeric, bool symbols)
         {
