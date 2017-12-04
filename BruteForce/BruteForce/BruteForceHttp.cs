@@ -94,7 +94,6 @@ namespace BruteForce
             do
             {
                 string psw = password.Generate();
-
                 //POST
                 if (methodNum == 1)
                 {
