@@ -21,6 +21,8 @@ namespace BruteForce
     class BruteForceHTTP
     {
         private const int NB_THREAD = 2;
+        private const int POST_METHOD = 1;
+        private const int GET_METHOD = 2;
 
         public string getUsername = "";
         public string getPassword = "";
@@ -105,10 +107,12 @@ namespace BruteForce
                 //POST
                 if (methodNum == 1)
                 {
+                    findPasswordThreadPOST(psw);
                     //POSTRequest(psw);
                 }
                 else//GET
                 {
+                    findPasswordThreadGET(psw);
                     //GETRequest(psw);
                 }
             } while (true);
@@ -296,7 +300,7 @@ namespace BruteForce
             else
             {
                 string find = "";
-                find = findPasswordThreadPOST(index);
+                find = sendPassword(index);
 
                 //si le mdp est vide ce n'est pas le bon
                 if (find != "")
@@ -319,9 +323,19 @@ namespace BruteForce
             //diviser le dictionaire et tester si le mot de passe est corrrect
             for (int i = nbLine / NB_THREAD * iStart; i < nbLine / NB_THREAD + nbLine / NB_THREAD * iStart; i++)
             {
-                if (findPasswordThreadGET(allPassword[i]))
+                if (methodNum == POST_METHOD)
                 {
-                    return allPassword[i];
+                    if (findPasswordThreadPOST(allPassword[i]))
+                    {
+                        return allPassword[i];
+                    }
+                }
+                else if (methodNum == GET_METHOD)
+                {
+                    if (findPasswordThreadGET(allPassword[i]))
+                    {
+                        return allPassword[i];
+                    }
                 }
             }
             //retourner si le mot de passse n'est pas trouvé
@@ -331,7 +345,6 @@ namespace BruteForce
 
         private bool findPasswordThreadGET(string password)
         {
-
             WebRequest request;
             //string de l'url pour la requete
             string _url;
@@ -357,35 +370,30 @@ namespace BruteForce
         }
 
 
-        public string findPasswordThreadPOST(int iStart)
+
+        public bool findPasswordThreadPOST(string password)
         {
-            string passwordToReturn = "";
             using (WebClient client = new WebClient())
             {
-                //diviser le dictionaire et tester si le mot de passe est corrrect
-                for (int i = nbLine / NB_THREAD * iStart; i < nbLine / NB_THREAD + nbLine / NB_THREAD * iStart; i++)
-                {
-                    byte[] response =
-                client.UploadValues(url, new NameValueCollection()
-                {
-                        { getUsername, username },
-                        { getPassword, allPassword[i] }
-                });
-
-                    string result = System.Text.Encoding.UTF8.GetString(response);
-
-                    //comparer la page si elle est similaire à celle d'erreur
-                    if (result != badRequestPost)
+                byte[] response =
+                    client.UploadValues(url, new NameValueCollection()
                     {
-                        //retourner le mot de passe trouvé
-                        return allPassword[i];
-                    }
+                                { getUsername, username },
+                                { getPassword, password }
+                    });
 
+                string result = System.Text.Encoding.UTF8.GetString(response);
+
+                //comparer la page si elle est similaire à celle d'erreur
+                if (result != badRequestPost)
+                {
+                    //retourner true si le mot de passe est trouvé
+                    return true;
                 }
+                return false;
             }
-
-            return passwordToReturn;
         }
+
 
         /// <summary>
         /// Construire l'url pour la requete
