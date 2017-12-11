@@ -62,7 +62,7 @@ namespace BruteForce
         WebClient wb = new WebClient();
         NameValueCollection data = new NameValueCollection();
 
-        public BruteForceHTTP(string _url, string _login, string _password, string _path, bool _majuscules, bool _minuscules, bool _numbers, bool _symbols, int _method, int _mode, int _maxChar, int _minChar, string _username,string _getUsername,string _getPassword)
+        public BruteForceHTTP(string _url, string _login, string _password, string _path, bool _majuscules, bool _minuscules, bool _numbers, bool _symbols, int _method, int _mode, int _maxChar, int _minChar, string _username, string _getUsername, string _getPassword)
         {
             url = _url;
             login = _login;
@@ -101,6 +101,7 @@ namespace BruteForce
             do
             {
                 string psw = password.Generate();
+
                 //POST
                 if (methodNum == 1)
                 {
@@ -197,7 +198,7 @@ namespace BruteForce
                 badRequestPost = System.Text.Encoding.UTF8.GetString(response);
 
             }
-            
+
             //stocker la page avec connexion échouée
             StreamReader sr = new StreamReader(reponseGET.GetResponseStream());
             badRequest = sr.ReadToEnd();
@@ -220,7 +221,7 @@ namespace BruteForce
             {
                 th.Join();
             }
-            
+
             MessageBox.Show(passwordRight);
             /*try
             {
@@ -283,7 +284,7 @@ namespace BruteForce
             if (methodGET)
             {
                 string find = "";
-                find = findPasswordThreadGET(index);
+                find = sendPassword(index);
 
                 //si le mdp est vide ce n'est pas le bon
                 if (find != "")
@@ -311,10 +312,25 @@ namespace BruteForce
         /// </summary>
         /// <param name="iStart">numero du thread</param>
         /// <returns>le mot de passe ou rien</returns>
-        public string findPasswordThreadGET(int iStart)
+        public string sendPassword(int iStart)
         {
-            //variable mot de passe
-            String passwordThread = "";
+            string notFinded = "";
+
+            //diviser le dictionaire et tester si le mot de passe est corrrect
+            for (int i = nbLine / NB_THREAD * iStart; i < nbLine / NB_THREAD + nbLine / NB_THREAD * iStart; i++)
+            {
+                if (findPasswordThreadGET(allPassword[i]))
+                {
+                    return allPassword[i];
+                }
+            }
+            //retourner si le mot de passse n'est pas trouvé
+            return notFinded;
+
+        }
+
+        private bool findPasswordThreadGET(string password)
+        {
 
             WebRequest request;
             //string de l'url pour la requete
@@ -322,29 +338,24 @@ namespace BruteForce
             //reponse de la requete
             StreamReader sr;
 
-            //diviser le dictionaire et tester si le mot de passe est corrrect
-            for (int i = nbLine / NB_THREAD * iStart; i < nbLine / NB_THREAD + nbLine / NB_THREAD * iStart; i++)
+            //construction de l'url avec le mot de passe dedans
+            _url = constructUrl(url, getUsername, username, getPassword, password);
+            //lancer la requete
+            request = WebRequest.Create(_url);
+            reponseGET = (HttpWebResponse)request.GetResponse();
+            //stocker le résultat
+            sr = new StreamReader(reponseGET.GetResponseStream());
+            finalRequest = sr.ReadToEnd();
+
+            //comparer la page si elle est similaire à celle d'erreur
+            if (finalRequest != badRequest)
             {
-                //construction de l'url avec le mot de passe dedans
-                _url = constructUrl(url, getUsername, "test", getPassword, allPassword[i]);
-                //lancer la requete
-                request = WebRequest.Create(_url);
-                reponseGET = (HttpWebResponse)request.GetResponse();
-                //stocker le résultat
-                sr = new StreamReader(reponseGET.GetResponseStream());
-                finalRequest = sr.ReadToEnd();
-
-                //comparer la page si elle est similaire à celle d'erreur
-                if (finalRequest != badRequest)
-                {
-                    //retourner le mot de passe trouvé
-                    return allPassword[i];
-                }
+                return true;
+                //retourner true si le mot de passe est trouvé
             }
-            //retourner si le mot de passse n'est pas trouvé
-            return passwordThread;
-
+            return false;
         }
+
 
         public string findPasswordThreadPOST(int iStart)
         {
@@ -357,7 +368,7 @@ namespace BruteForce
                     byte[] response =
                 client.UploadValues(url, new NameValueCollection()
                 {
-                        { getUsername, "test" },
+                        { getUsername, username },
                         { getPassword, allPassword[i] }
                 });
 
