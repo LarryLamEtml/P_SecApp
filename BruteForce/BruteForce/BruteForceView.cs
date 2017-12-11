@@ -178,7 +178,7 @@ namespace BruteForce
                     MessageBox.Show("Veuillez remplir le nom d'utilisateur");
                     break;
                 case VALID_FORM://Commence le bruteforce
-                    loadingBar.Visible = true;
+                    //loadingBar.Visible = true;
                     Thread thread = new Thread(startBruteForce);
                     thread.Start();
                     //startBruteForce();
@@ -193,7 +193,7 @@ namespace BruteForce
         {
             
             BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, mode, maxChar, minChar,username,txbLogin.Text,txbPassword.Text);
-            loadingBar.Visible = false;
+            //loadingBar.Visible = false;
         }
 
         private void txbMinChar_TextChanged(object sender, EventArgs e)
