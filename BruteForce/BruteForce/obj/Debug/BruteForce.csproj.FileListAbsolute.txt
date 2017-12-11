@@ -22,3 +22,8 @@ F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\C
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\WinFormAnimation.dll
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\CircularProgressBar.xml
 F:\Cours\Modules-iCT\PROJETS\P_SecApp\P_SecApp\BruteForce\BruteForce\bin\Debug\WinFormAnimation.xml
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\CircularProgressBar.dll
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\WinFormAnimation.dll
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\CircularProgressBar.xml
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\bin\Debug\WinFormAnimation.xml
+F:\PROJETS\P_SecApp\git\BruteForce\BruteForce\obj\Debug\BruteForce.LoadingForm.resources

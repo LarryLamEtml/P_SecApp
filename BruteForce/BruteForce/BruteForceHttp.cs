@@ -39,9 +39,6 @@ namespace BruteForce
         private string[] allPassword;
         private string dictionnaryPath;
 
-
-
-
         //Checkboxes
         private bool majuscules = false;
         private bool minuscules = false;
@@ -112,7 +109,6 @@ namespace BruteForce
                 else//GET
                 {
                     //GETRequest(psw);
-
                 }
             } while (true);
 
@@ -207,14 +203,16 @@ namespace BruteForce
             badRequest = sr.ReadToEnd();
             //lANCEMENT DES REQUETES EN MULTITHREAD
             List<Thread> threadList = new List<Thread>();
-            Thread dividePasswordFinder1 = new Thread(thread1Start);
+            Thread dividePasswordFinder1 = new Thread(threadStart);
             threadList.Add(dividePasswordFinder1);
-            Thread dividePasswordFinder2 = new Thread(thread2Start);
+            Thread dividePasswordFinder2 = new Thread(threadStart);
             threadList.Add(dividePasswordFinder2);
+            int index = 0;
             //lancer les threads
             foreach (Thread th in threadList)
             {
-                th.Start();
+                th.Start(index);
+                index++;
             }
 
             //attendre la fin des threads
@@ -279,12 +277,13 @@ namespace BruteForce
         /// <summary>
         /// Lancer le 1er thread
         /// </summary>
-        private void thread1Start()
+        private void threadStart(object obj)
         {
+            int index = (int)obj;
             if (methodGET)
             {
                 string find = "";
-                find = findPasswordThreadGET(0);
+                find = findPasswordThreadGET(index);
 
                 //si le mdp est vide ce n'est pas le bon
                 if (find != "")
@@ -296,38 +295,7 @@ namespace BruteForce
             else
             {
                 string find = "";
-                find = findPasswordThreadPOST(0);
-
-                //si le mdp est vide ce n'est pas le bon
-                if (find != "")
-                {
-                    //stocker le mot de passe si il est trouvé
-                    passwordRight = find;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Lancer le 2eme thread
-        /// </summary>
-        private void thread2Start()
-        {
-            if (methodGET)
-            {
-                string find = "";
-                find = findPasswordThreadGET(1);
-
-                //si le mdp est vide ce n'est pas le bon
-                if (find != "")
-                {
-                    //stocker le mot de passe si il est trouvé
-                    passwordRight = find;
-                }
-            }
-            else
-            {
-                string find = "";
-                find = findPasswordThreadPOST(1);
+                find = findPasswordThreadPOST(index);
 
                 //si le mdp est vide ce n'est pas le bon
                 if (find != "")
