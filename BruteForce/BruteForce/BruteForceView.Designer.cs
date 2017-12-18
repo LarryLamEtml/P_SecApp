@@ -434,7 +434,7 @@ namespace BruteForce
             this.MaximizeBox = false;
             this.Name = "BruteForceView";
             this.Sizable = false;
-            this.Text = "  ";
+            this.Text = "  BruteForce";
             this.ResumeLayout(false);
             this.PerformLayout();
 
