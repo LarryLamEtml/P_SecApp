@@ -107,7 +107,7 @@ namespace BruteForce
             RandomPassword password = new RandomPassword(minChar, maxChar, minuscules, majuscules, numbers, symbols);
             do
             {
-                string psw = password.Generate();
+                string psw = password.GeneratePassword();
 
                 //POST
                 if (methodNum == 1)
