@@ -54,8 +54,6 @@ namespace BruteForce
         //Variable pour http
         private HttpWebResponse reponseGET;
 
-        //Code html de la page retourné après envoi du mdp
-        private string finalRequest = "";
 
         //Dictionnaire
             //tableau des passwords
@@ -291,16 +289,17 @@ namespace BruteForce
             WebRequest request;
             //string de l'url pour la requete
             string _url;
-            //reponse de la requete
-            StreamReader sr;
-
+            
+            string finalRequest;
             //construction de l'url avec le mot de passe dedans
             _url = constructUrl(url, getUsername, username, getPassword, password);
             //lancer la requete
             request = WebRequest.Create(_url);
             reponseGET = (HttpWebResponse)request.GetResponse();
+            
             //stocker le résultat
-            sr = new StreamReader(reponseGET.GetResponseStream());
+            //reponse de la requete
+            StreamReader sr = new StreamReader(reponseGET.GetResponseStream());
             finalRequest = sr.ReadToEnd();
 
             //comparer la page si elle est similaire à celle d'erreur
