@@ -48,14 +48,18 @@ namespace BruteForce
 
             //Couleurs et thèmes
             setColors();
+
             //Récupère le dictionnaire par defaut
             //Definit la methode post par defaut (radio)
             radioPost.Checked = true;
             this.AcceptButton = btnStart;
-
+            //Cache les options
             hideOptions();
         }
 
+        /// <summary>
+        /// Cache les options dans le cas ou le dictionnaire est choisi comme option
+        /// </summary>
         public void hideOptions()
         {
             cbMajuscule.Hide();
@@ -68,6 +72,10 @@ namespace BruteForce
             txbMin.Hide();
             txbMinChar.Hide();
         }
+
+        /// <summary>
+        /// affiche les options dans le cas ou la génération manuelle est choisi comme option
+        /// </summary>
         public void showOptions()
         {
             cbMajuscule.Show();
@@ -82,7 +90,7 @@ namespace BruteForce
         }
 
         /// <summary>
-        /// 
+        /// Définit les couleurs de la form
         /// </summary>
         private void setColors()
         {
@@ -91,9 +99,13 @@ namespace BruteForce
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.DeepPurple400, TextShade.WHITE);
-
         }
 
+        /// <summary>
+        /// Restreint l'input à que des chiffres
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbMinChar_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             //Input chiffres seulement
@@ -101,11 +113,18 @@ namespace BruteForce
             {
                 e.Handled = true;
             }
-            /* Size size = TextRenderer.MeasureText(txbMinChar.Text, txbMinChar.Font);
+            /*
+             Taille responsive
+             Size size = TextRenderer.MeasureText(txbMinChar.Text, txbMinChar.Font);
              txbMinChar.Width = size.Width;
              txbMinChar.Height = size.Height;*/
         }
 
+        /// <summary>
+        /// Restreint l'input à que des chiffres
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txMaxChar_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Input chiffres seulement
@@ -137,8 +156,7 @@ namespace BruteForce
         {
             try
             {
-                //Stocke les données du fichier dans une variable
-                //dictionnaryData = System.IO.File.ReadAllLines(fileDialogDictionary.FileName);
+                //Stocke le chemin du fichier dans une variable
                 dictionnaryPath = fileDialogDictionary.FileName;
                 //Affiche le chemin du fichier choisi
                 txbDicoFileName.Text = fileDialogDictionary.FileName;
@@ -151,6 +169,11 @@ namespace BruteForce
             }
         }
 
+        /// <summary>
+        /// Check si tout est bien rempli puis lance le bruteforce
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
             //Vérifie que tout les champs sont valide et affiche un message d'erreur pour les champs spécifiques
@@ -177,12 +200,10 @@ namespace BruteForce
                 case ERROR_USERNAME:
                     MessageBox.Show("Veuillez remplir le nom d'utilisateur");
                     break;
-                case VALID_FORM://Commence le bruteforce
-                    //loadingBar.Visible = true;
+                case VALID_FORM:
+                    //Commence le bruteforce
                     Thread thread = new Thread(startBruteForce);
                     thread.Start();
-                    //thread.Start();
-                    //startBruteForce();
                     break;
                 default:
                     break;
@@ -190,58 +211,99 @@ namespace BruteForce
             }
         }
 
+        /// <summary>
+        /// Crée la classe qui va gérer le bruteforce
+        /// </summary>
         private void startBruteForce()
         {
             
             BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, mode, maxChar, minChar,username,txbLogin.Text,txbPassword.Text);
-            //loadingBar.Visible = false;
         }
 
+        /// <summary>
+        ///set le nombre de caractères min
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbMinChar_TextChanged(object sender, EventArgs e)
         {
-            //Définit le nombre de caractères min
+            //set le nombre de caractères min
             minChar = Convert.ToInt32(txbMinChar.Text);
         }
 
+        /// <summary>
+        ///Définit le nombre de caractères max
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbMaxChar_TextChanged(object sender, EventArgs e)
         {
             //Définit le nombre de caractères max
             maxChar = Convert.ToInt32(txbMaxChar.Text);
         }
 
+        /// <summary>
+        ///Définit si les minuscules est choisi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbMinuscule_CheckedChanged(object sender, EventArgs e)
         {
             //Définit si les minuscules est choisi
             minuscules = cbMinuscule.Checked;
         }
 
+        /// <summary>
+        ///Définit si les chiffres sont choisis
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbNumbers_CheckedChanged(object sender, EventArgs e)
         {
             //Définit si les chiffres sont choisis
             numbers = cbNumbers.Checked;
         }
 
+        /// <summary>
+        /// Définit si les majuscules sont choisies
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbMajuscule_CheckedChanged(object sender, EventArgs e)
         {
             //Définit si les majuscules sont choisies
             majuscules = cbMajuscule.Checked;
         }
-
+        /// <summary>
+        /// Définit si les symboles sont choisis
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbSymbols_CheckedChanged(object sender, EventArgs e)
         {
             //Définit si les symboles sont choisis
             symbols = cbSymbols.Checked;
         }
 
+        /// <summary>
+        /// Définit l'url
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbUrl_TextChanged(object sender, EventArgs e)
         {
             //Définit l'url
             url = txbUrl.Text;
         }
 
+        /// <summary>
+        ///Définit la methode (POST ou GET)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioPost_CheckedChanged(object sender, EventArgs e)
         {
-            //Définit la methode
+            //Définit la methode (POST ou GET) en fonction du radio button selectionné
             if (radioPost.Checked)
             {
                 method = 1;
@@ -252,9 +314,14 @@ namespace BruteForce
             }
         }
 
+        /// <summary>
+        ///Définit la methode (POST ou GET)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioGet_CheckedChanged(object sender, EventArgs e)
         {
-            //Définit la methode
+            //Définit la methode (POST ou GET) en fonction du radio button selectionné
             if (radioGet.Checked)
             {
                 method = 2;
@@ -324,38 +391,57 @@ namespace BruteForce
             return VALID_FORM;
         }
 
+        /// <summary>
+        /// Set la variable login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbLogin_TextChanged(object sender, EventArgs e)
         {
             login = txbLogin.Text;
         }
 
+        /// <summary>
+        /// Set la variable password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbPassword_TextChanged(object sender, EventArgs e)
         {
             password = txbPassword.Text;
 
         }
 
-        private void BruteForceView_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Set le username
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbUsername_TextChanged(object sender, EventArgs e)
         {
             username = txbUsername.Text;
         }
 
+        /// <summary>
+        /// Change les propriétés disponibles en fonction du mode dictionnaire ou génération
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbOptions_CheckedChanged(object sender, EventArgs e)
         {
+            //Si la génération est selectionnée
             if(cbOptions.Checked)
             {
+                //Affiche et cache les propriétés en liens
                 btnImport.Enabled = false;
                 txbDicoFileName.Enabled = false;
                 showOptions();
                 mode = 2;
             }
+            //sinon
             else
             {
+                //Affiche et cache les propriétés en liens
                 btnImport.Enabled = true;
                 txbDicoFileName.Enabled = true;
                 hideOptions();

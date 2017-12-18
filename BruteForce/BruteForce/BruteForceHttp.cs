@@ -20,12 +20,20 @@ namespace BruteForce
 {
     class BruteForceHTTP
     {
+        //propriétés des thread 
         private const int NB_THREAD = 2;
         private const int POST_METHOD = 1;
         private const int GET_METHOD = 2;
 
+        //
         public string getUsername = "";
         public string getPassword = "";
+
+        //
+        private string url;
+        private string login;
+        private string password;
+        private string username;
 
         private FileStream fl;
         private int nbLine;
@@ -34,7 +42,6 @@ namespace BruteForce
         private string badRequestPost = "";
         public string passwordRight = "";
         private HttpWebResponse reponseGET;
-        private bool methodGET = true;
         private string finalRequest = "";
 
         //Dictionnaire
@@ -56,10 +63,6 @@ namespace BruteForce
         private int maxChar;
         private int minChar;
 
-        private string url;
-        private string login;
-        private string password;
-        private string username;
 
         WebClient wb = new WebClient();
         NameValueCollection data = new NameValueCollection();
@@ -168,16 +171,6 @@ namespace BruteForce
             catch
             {
                 MessageBox.Show("Pas de dictionnaire ici..");
-            }
-            //choix de la méthode
-            if (methodNum == 1)
-            {
-                methodGET = false;
-            }
-            else//GET
-            {
-                methodGET = true;
-
             }
             //construire l'url avec des guid car c'est unique donc aucun user aura ce mdp et nom
             String _url = constructUrl(url, getUsername, Guid.NewGuid().ToString(), getPassword, Guid.NewGuid().ToString());
