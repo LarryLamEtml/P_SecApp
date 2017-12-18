@@ -435,7 +435,6 @@ namespace BruteForce
             this.Name = "BruteForceView";
             this.Sizable = false;
             this.Text = "  ";
-            this.Load += new System.EventHandler(this.BruteForceView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
