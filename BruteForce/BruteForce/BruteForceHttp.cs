@@ -78,13 +78,16 @@ namespace BruteForce
             minChar = _minChar;
             url = _url;
             login = _login;
-            password = _password;
             username = _username;
             getUsername = _getUsername;
             getPassword = _getPassword;
             method = (_method == 1 ? "POST" : "GET");
             mode = _mode;
             methodNum = _method;
+
+            //informaer lutilisateur que le test des mots de passe va commencer
+            Thread msgThread = new Thread(showStartMessage);
+            msgThread.Start();
 
             if (mode == 1)
             {
@@ -95,6 +98,11 @@ namespace BruteForce
                 generatePasswords();
             }
 
+        }
+
+        private void showStartMessage()
+        {
+            MessageBox.Show("Début du test des mot de passe .......\n\nVeuillez attendre\n\nVous pouvez fermer cette MessageBox");
         }
 
         private void generatePasswords()

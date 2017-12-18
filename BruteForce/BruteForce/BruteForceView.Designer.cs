@@ -58,7 +58,6 @@ namespace BruteForce
             this.txbPassword = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txbUsername = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.cbOptions = new MaterialSkin.Controls.MaterialCheckBox();
-            this.loadingBar = new CircularProgressBar.CircularProgressBar();
             this.SuspendLayout();
             // 
             // btnImport
@@ -405,47 +404,11 @@ namespace BruteForce
             this.cbOptions.UseVisualStyleBackColor = true;
             this.cbOptions.CheckedChanged += new System.EventHandler(this.cbOptions_CheckedChanged);
             // 
-            // loadingBar
-            // 
-            this.loadingBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.loadingBar.AnimationSpeed = 2000;
-            this.loadingBar.BackColor = System.Drawing.Color.Transparent;
-            this.loadingBar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.loadingBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadingBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.loadingBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.loadingBar.InnerMargin = 0;
-            this.loadingBar.InnerWidth = 0;
-            this.loadingBar.Location = new System.Drawing.Point(0, 119);
-            this.loadingBar.MarqueeAnimationSpeed = 2000;
-            this.loadingBar.Name = "loadingBar";
-            this.loadingBar.OuterColor = System.Drawing.Color.Gray;
-            this.loadingBar.OuterMargin = -11;
-            this.loadingBar.OuterWidth = 8;
-            this.loadingBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.loadingBar.ProgressWidth = 14;
-            this.loadingBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadingBar.Size = new System.Drawing.Size(369, 372);
-            this.loadingBar.StartAngle = 270;
-            this.loadingBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.loadingBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.loadingBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.loadingBar.SubscriptText = "";
-            this.loadingBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.loadingBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.loadingBar.SuperscriptText = "...";
-            this.loadingBar.TabIndex = 23;
-            this.loadingBar.Text = "Chargement";
-            this.loadingBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.loadingBar.Value = 67;
-            this.loadingBar.Visible = false;
-            // 
             // BruteForceView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 593);
-            this.Controls.Add(this.loadingBar);
             this.Controls.Add(this.cbOptions);
             this.Controls.Add(this.txbUsername);
             this.Controls.Add(this.txbPassword);
@@ -502,7 +465,6 @@ namespace BruteForce
         private MaterialSkin.Controls.MaterialSingleLineTextField txbPassword;
         private MaterialSkin.Controls.MaterialSingleLineTextField txbUsername;
         private MaterialSkin.Controls.MaterialCheckBox cbOptions;
-        private CircularProgressBar.CircularProgressBar loadingBar;
     }
 }
 
