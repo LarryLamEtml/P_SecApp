@@ -261,6 +261,4 @@ __pycache__/
 *.pyc
 Terminal/bruteForce/
 
-*.exe
-
 *.Cache
