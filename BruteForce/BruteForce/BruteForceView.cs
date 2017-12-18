@@ -1,8 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
-using System.Drawing;
-using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -28,11 +26,13 @@ namespace BruteForce
         private int maxChar = 100;
         private int minChar = 1;
 
+        //variable du website
         private string url;
         private string login;
         private string password;
         private string username;
 
+        //Index pour les types d'erreurs
         private const int ERROR_MINCHAR = 0;
         private const int ERROR_MAXCHAR = 1;
         private const int ERROR_DICTIONNARY = 2;

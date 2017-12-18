@@ -284,29 +284,14 @@ namespace BruteForce
         private void threadStart(object obj)
         {
             int index = (int)obj;
-            if (methodGET)
-            {
-                string find = "";
-                find = sendPassword(index);
+            string find = "";
+            find = sendPassword(index);
 
-                //si le mdp est vide ce n'est pas le bon
-                if (find != "")
-                {
-                    //stocker le mot de passe si il est trouvé
-                    passwordRight = find;
-                }
-            }
-            else
+            //si le mdp est vide ce n'est pas le bon
+            if (find != "")
             {
-                string find = "";
-                find = sendPassword(index);
-
-                //si le mdp est vide ce n'est pas le bon
-                if (find != "")
-                {
-                    //stocker le mot de passe si il est trouvé
-                    passwordRight = find;
-                }
+                //stocker le mot de passe si il est trouvé
+                passwordRight = find;
             }
         }
 
