@@ -111,49 +111,12 @@ namespace BruteForce
                 if (methodNum == 1)
                 {
                     findPasswordThreadPOST(psw);
-                    //POSTRequest(psw);
                 }
                 else//GET
                 {
                     findPasswordThreadGET(psw);
-                    //GETRequest(psw);
                 }
             } while (true);
-
-            /*
-            foreach (string s in allPassword)
-            {
-                //S'il y a des majuscules
-                if (s.Any(char.IsUpper) == majuscules)
-                {
-                    //S'il y a des minuscules
-                    if (s.Any(char.IsLower) == minuscules)
-                    {
-                        //S'il y a des chiffres
-                        if (s.Any(char.IsDigit) == numbers)
-                        {
-                            //S'il y a des symbols
-                            if (s.Any(ch => !Char.IsLetter(ch) == symbols))
-                            {
-                                //Si le mot respecte la taille min et max définie
-                                if (s.Length >= minChar && s.Length <= maxChar)
-                                {
-                                    //POST
-                                    if (methodNum == 1)
-                                    {
-                                        POSTRequest(s);
-                                    }
-                                    else//GET
-                                    {
-                                        GETRequest(s);
-
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }*/
         }
 
 
@@ -219,57 +182,7 @@ namespace BruteForce
             }
 
             MessageBox.Show(passwordRight);
-            /*try
-            {
-                allPassword = System.IO.File.ReadAllLines(dictionnaryPath);
-                nbLine = allPassword.Count();
-            }
-            catch
-            {
-                MessageBox.Show("Le dictionnaire est introuvable...");
-                allPassword = null;
-                nbLine = 0;
-            }
-            foreach (string s in allPassword)
-            {
-                //POST
-                if (methodNum == 1)
-                {
-                    POSTRequest(s);
-                }
-                else//GET
-                {
-                    GETRequest(s);
-
-                }
-            }*/
         }
-
-        /* private void POSTRequest(string _password)
-         {
-             data[login] = username;
-             data[password] = _password;
-             var response = wb.UploadValues(url, method, data);
-
-             using (WebClient client = new WebClient())
-             {
-                                 byte[] postReponse =
-                 client.UploadValues(url, new NameValueCollection()
-                 {
-                                         { getUsername, "test" },
-                                         { getPassword, _password }
-                 });
-
-                 string result = System.Text.Encoding.UTF8.GetString(postReponse);
-
-                 //comparer la page si elle est similaire à celle d'erreur
-                 if (result != badRequestPost)
-                 {
-                     //retourner le mot de passe trouvé
-                     return _password;
-                 }
-             }
-         }*/
 
         /// <summary>
         /// Lancer le 1er thread
