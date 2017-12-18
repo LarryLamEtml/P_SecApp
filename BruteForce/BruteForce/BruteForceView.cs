@@ -1,4 +1,12 @@
-﻿using MaterialSkin;
+﻿/* ETML
+ * 
+ * Auteur : Larry Lam, Justin Vuffray
+ * Date : 06.11.2017
+ * Description : Génération de passwords en fonction des paramètres donnés
+ * 
+ * 
+ * */
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Text.RegularExpressions;
@@ -7,6 +15,9 @@ using System.Windows.Forms;
 
 namespace BruteForce
 {
+    /// <summary>
+    /// Génération de passwords en fonction des paramètres donnés
+    /// </summary>
     public partial class BruteForceView : MaterialForm
     {
         //Dictionnaire
@@ -42,6 +53,9 @@ namespace BruteForce
         private const int ERROR_USERNAME = 6;
         private const int VALID_FORM = 10;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public BruteForceView()
         {
             InitializeComponent();

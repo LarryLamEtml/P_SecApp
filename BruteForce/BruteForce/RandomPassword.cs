@@ -11,6 +11,9 @@ using System.Collections.Generic;
 
 namespace BruteForce
 {
+    /// <summary>
+    /// Génération de password en fonction des paramètres donnés
+    /// </summary>
     class RandomPassword
     {
         //Max et min char par default
