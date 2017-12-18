@@ -181,6 +181,7 @@ namespace BruteForce
                     //loadingBar.Visible = true;
                     Thread thread = new Thread(startBruteForce);
                     thread.Start();
+                    //thread.Start();
                     //startBruteForce();
                     break;
                 default:
