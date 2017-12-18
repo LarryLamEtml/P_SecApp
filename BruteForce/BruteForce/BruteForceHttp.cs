@@ -1,8 +1,8 @@
 ﻿/* ETML
  * 
- * Author : Larry Lam, Justin Vuffray
+ * Auteur : Larry Lam, Justin Vuffray
  * Date : 06.11.2017
- * Description : Traitement de la vue.
+ * Description : Traitement des requetes HTTP 
  * 
  * 
  * */
@@ -200,13 +200,12 @@ namespace BruteForce
                 });
 
                 badRequestPost = System.Text.Encoding.UTF8.GetString(response);
-
             }
 
             //stocker la page avec connexion échouée
             StreamReader sr = new StreamReader(reponseGET.GetResponseStream());
             badRequest = sr.ReadToEnd();
-            //lANCEMENT DES REQUETES EN MULTITHREAD
+            //LANCEMENT DES REQUETES EN MULTITHREAD
             List<Thread> threadList = new List<Thread>();
             Thread dividePasswordFinder1 = new Thread(threadStart);
             threadList.Add(dividePasswordFinder1);

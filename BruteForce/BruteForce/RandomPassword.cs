@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* ETML
+ * 
+ * Auteur : Larry Lam, Justin Vuffray
+ * Date : 06.11.2017
+ * Description : Génération de password en fonction des paramètres donnés
+ * 
+ * 
+ * */
+using System;
 using System.Security.Cryptography;
 
 namespace BruteForce
