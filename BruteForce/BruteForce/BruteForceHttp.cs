@@ -31,8 +31,6 @@ namespace BruteForce
 
         //
         private string url;
-        private string login;
-        private string password;
         private string username;
 
         private FileStream fl;
@@ -67,11 +65,10 @@ namespace BruteForce
         WebClient wb = new WebClient();
         NameValueCollection data = new NameValueCollection();
 
-        public BruteForceHTTP(string _url, string _login, string _password, string _path, bool _majuscules, bool _minuscules, bool _numbers, bool _symbols, int _method, int _mode, int _maxChar, int _minChar, string _username, string _getUsername, string _getPassword)
+        public BruteForceHTTP(string _url, string _login, string _password, string _path, bool _majuscules, bool _minuscules, bool _numbers, bool _symbols, int _method, int _mode, int _maxChar, int _minChar, string _username)
         {
             url = _url;
-            login = _login;
-            password = _password;
+            username = _username;
             dictionnaryPath = _path;
             majuscules = _majuscules;
             minuscules = _minuscules;
@@ -79,11 +76,8 @@ namespace BruteForce
             symbols = _symbols;
             maxChar = _maxChar;
             minChar = _minChar;
-            url = _url;
-            login = _login;
-            username = _username;
-            getUsername = _getUsername;
-            getPassword = _getPassword;
+            getUsername = _login;
+            getPassword = _password;
             method = (_method == 1 ? "POST" : "GET");
             mode = _mode;
             methodNum = _method;

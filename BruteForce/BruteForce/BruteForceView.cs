@@ -217,7 +217,7 @@ namespace BruteForce
         private void startBruteForce()
         {
             
-            BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, mode, maxChar, minChar,username,txbLogin.Text,txbPassword.Text);
+            BruteForceHTTP bruteF = new BruteForceHTTP(url, login, password, dictionnaryPath, majuscules, minuscules, numbers, symbols, method, mode, maxChar, minChar,username);
         }
 
         /// <summary>

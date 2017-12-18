@@ -382,7 +382,7 @@ namespace BruteForce
             this.txbUsername.SelectionLength = 0;
             this.txbUsername.SelectionStart = 0;
             this.txbUsername.Size = new System.Drawing.Size(145, 23);
-            this.txbUsername.TabIndex = 21;
+            this.txbUsername.TabIndex = 4;
             this.txbUsername.TabStop = false;
             this.txbUsername.UseSystemPasswordChar = false;
             this.txbUsername.TextChanged += new System.EventHandler(this.txbUsername_TextChanged);
